@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap');
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #5080fe;
+    
+
+}
+.conatainer{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+    height: 1000px;
+    width: 1000px;
+    flex-direction: column;
+}
+
+.grid{
+    margin: auto;
+    width: 700px;
+    height: 700px;
+    background-color: #5080fe;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 240px;
+}
+.js-4,.js-6 {
+    border-top: 5px solid white;
+    border-bottom: 5px solid white ;
+}
+.js-5{
+    border: 5px solid white;
+}
+.js-2,.js-8 {
+    border-left: 5px solid white;
+    border-right: 5px solid white;
+}
+
+.js-c{
+    color: white;
+    font-size: 50px;
+    width: 250px;
+}
+.js-reset{
+    background-color: black;
+    box-shadow: 0 1px 3px #000000;
+    max-width: 150px;
+    margin:0 auto;
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+.score-contaner{
+    width: 100%!important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: -15px;
+    z-index: 100;
+}
+
+@media(max-width:1000px){
+    .conatainer{
+        height: 800px;
+        width: 800px;
+    }
+    .grid{
+        height: 501px;
+        width: 501px;
+        grid-template-columns: 167px 167px 167px;
+    }
+    div div{
+        width: 167px!important;
+        height: 167px;
+    }
+}
+@media(max-width:800px){
+    .conatainer{
+        width: 100%;
+    }
+    .grid{
+        height: 501px;
+        width: 501px;
+        grid-template-columns: 167px 167px 167px;
+    }
+    div div{
+        width: 167px!important;
+        height: 167px;
+    }
+}
