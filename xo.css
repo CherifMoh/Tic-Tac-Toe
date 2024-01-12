@@ -86,7 +86,7 @@ div div{
         height: 167px;
     }
 }
-/* @media(max-width:800px){
+@media(max-width:800px){
     .conatainer{
         width: 100%;
     }
@@ -99,4 +99,4 @@ div div{
         width: 167px!important;
         height: 167px;
     }
-} */
+}
