@@ -71,7 +71,7 @@ div div{
     z-index: 100;
 }
 
-/* @media(max-width:1000px){
+@media(max-width:1000px){
     .conatainer{
         height: 800px;
         width: 800px;
@@ -99,4 +99,4 @@ div div{
         width: 167px!important;
         height: 167px;
     }
-} */
+}
