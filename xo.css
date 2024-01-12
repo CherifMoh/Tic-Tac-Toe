@@ -60,6 +60,8 @@ div div{
     text-align: center;
 }
 .score-contaner{
+    font-size: 20px;
+    font-weight: 500;
     width: 100%!important;
     display: flex;
     justify-content: space-around;
@@ -84,7 +86,7 @@ div div{
         height: 167px;
     }
 }
-@media(max-width:800px){
+/* @media(max-width:800px){
     .conatainer{
         width: 100%;
     }
@@ -97,4 +99,4 @@ div div{
         width: 167px!important;
         height: 167px;
     }
-}
+} */

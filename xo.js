@@ -33,7 +33,7 @@ function replay(){
 function scoreDesplay(Result){
     localStorage.setItem('score',JSON.stringify(score))
     document.querySelector('.js-result').innerHTML = Result;
-    document.querySelector('.js-result').style.color = Result === 'You win'?'green':'red'
+    document.querySelector('.js-result').style.color = Result === 'You win'?'rgb(63, 247, 2)':'red'
     document.querySelector('.js-wins').innerHTML = `Wins : ${score.win}`;
     document.querySelector('.js-loses').innerHTML = `Losses : ${score.lose}`;
     setTimeout(replay,2000)
@@ -45,7 +45,7 @@ function winCheck(ele1,ele2,ele3){
         allCells.forEach(cell=>{
             cell.removeEventListener('click', cellXP);
         })
-        Result =' You win' 
+        Result ='You win' 
         score.win += 1;
         scoreDesplay(Result)
     }
