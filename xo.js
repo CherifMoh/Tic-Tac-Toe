@@ -16,28 +16,27 @@ const c9 = document.querySelector('.js-9')
 const allCells = document.querySelectorAll('.js-c')
 document.querySelector('.js-reset').addEventListener('click',reset)
 function reset() {
-    score.lose=0;
-    score.Win=0;
-
-    localStorage.removeItem('score');
-    document.querySelector('.js-score')
-        .innerHTML = `Wins : ${score.Win}Losses : ${score.lose}`;
-    document.querySelector('.js-result').innerHTML = '';
+    score={
+        lose:0,
+        win:0
+    }
+    localStorage.setItem('score',JSON.stringify(score))
+    scoreDesplay('')
 }
 function replay(){
     allCells.forEach(cell => {
+        document.querySelector('.grid').classList.remove('end')
         cell.innerHTML ='';
         cell.addEventListener('click', cellXP);
     });
 }
 function scoreDesplay(Result){
-    localStorage.setItem('score',JSON.stringify(score))
     document.querySelector('.js-result').innerHTML = Result;
     document.querySelector('.js-result').style.color = Result === 'You win'?'rgb(63, 247, 2)':'red'
+    console.log(score.lose)
     document.querySelector('.js-wins').innerHTML = `Wins : ${score.win}`;
     document.querySelector('.js-loses').innerHTML = `Losses : ${score.lose}`;
-    setTimeout(replay,2000)
-
+    
 }
 function winCheck(ele1,ele2,ele3){
     const eleArray =[ele1,ele2,ele3]
@@ -48,6 +47,9 @@ function winCheck(ele1,ele2,ele3){
         Result ='You win' 
         score.win += 1;
         scoreDesplay(Result)
+        localStorage.setItem('score',JSON.stringify(score))
+        setTimeout(replay,2000)
+        document.querySelector('.grid').classList.add('end')
     }
 }
 function loseCheck(ele1,ele2,ele3){
@@ -59,7 +61,7 @@ function loseCheck(ele1,ele2,ele3){
         Result ='You lose' 
         score.lose += 1;
         scoreDesplay(Result)
-
+        setTimeout(replay,2000)
     }
 }
 function winCheckRun(){
@@ -87,16 +89,18 @@ function Xplay(element) {
         element.innerHTML = 'X';
     }
     element.removeEventListener('click', cellXP);
-    setTimeout(()=>{ 
-        for (let i = 0; i < 8; i++) { 
-            const randomNumber = Math.floor(Math.random() * 8) + 1;
-            const selectedE = document.querySelector(`.js-${randomNumber}`);
-            
-            if (selectedE.innerHTML === '') {
-                selectedE.innerHTML = 'O';
-                selectedE.removeEventListener('click', cellXP);
-                loseCheckRun()
-                break; 
+    const timeoutId = setTimeout(()=>{ 
+        if(!document.querySelector('.grid').classList.contains('end')){
+            for (let i = 0; i < 8; i++) { 
+                const randomNumber = Math.floor(Math.random() * 8) + 1;
+                const selectedC = document.querySelector(`.js-${randomNumber}`);
+                
+                if (selectedC.innerHTML === '') {
+                    selectedC.innerHTML = 'O';
+                    selectedC.removeEventListener('click', cellXP);
+                    loseCheckRun()
+                    break; 
+                }
             }
         }
     },200)
@@ -107,7 +111,10 @@ function cellXP() {
     winCheckRun()
     
 }
-
+const resetButton = document.querySelector('.js-reset')
+resetButton.addEventListener('click',()=>{
+    reset()
+})
 allCells.forEach(cell => {
     cell.addEventListener('click', cellXP);
 });
