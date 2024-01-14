@@ -31,9 +31,9 @@ function replay(){
     });
 }
 function scoreDesplay(Result){
-    document.querySelector('.js-result').innerHTML = Result;
-    document.querySelector('.js-result').style.color = Result === 'You win'?'rgb(63, 247, 2)':'red'
-    console.log(score.lose)
+    const result =document.querySelector('.js-result')
+    result.innerHTML = Result;
+    result.style.color = Result === 'You win'?'rgb(63, 247, 2)':'red'
     document.querySelector('.js-wins').innerHTML = `Wins : ${score.win}`;
     document.querySelector('.js-loses').innerHTML = `Losses : ${score.lose}`;
     
