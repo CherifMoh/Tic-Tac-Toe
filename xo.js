@@ -27,8 +27,24 @@ function replay(){
     allCells.forEach(cell => {
         document.querySelector('.grid').classList.remove('end')
         cell.innerHTML ='';
+        document.querySelector('.js-result').innerHTML = '';
         cell.addEventListener('click', cellXP);
     });
+}
+function tieCheck(){
+    const result = document.querySelector('.js-result')
+    if(result.innerHTML === ''){
+        let emptyCells =0
+        allCells.forEach(cell=>{
+            if(cell.innerHTML !== ''){
+                emptyCells++
+            }
+        })
+        if(emptyCells===9){
+            result.innerHTML = 'Tie';
+            setTimeout(replay,2000)
+        }
+    }
 }
 function scoreDesplay(Result){
     const result =document.querySelector('.js-result')
@@ -89,7 +105,7 @@ function Xplay(element) {
         element.innerHTML = 'X';
     }
     element.removeEventListener('click', cellXP);
-    const timeoutId = setTimeout(()=>{ 
+    setTimeout(()=>{
         if(!document.querySelector('.grid').classList.contains('end')){
             for (let i = 0; i < 8; i++) { 
                 const randomNumber = Math.floor(Math.random() * 8) + 1;
@@ -109,7 +125,7 @@ function cellXP() {
     const cell = this; 
     Xplay(cell);
     winCheckRun()
-    
+    tieCheck()
 }
 const resetButton = document.querySelector('.js-reset')
 resetButton.addEventListener('click',()=>{
